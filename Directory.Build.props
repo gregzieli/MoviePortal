@@ -1,0 +1,8 @@
+<Project>
+  <PropertyGroup>
+    <Authors>Grzegorz Zieliński</Authors>
+    <Copyright>Copyright @ 2019 Grzegorz Zieliński</Copyright>
+    <LangVersion>8.0</LangVersion>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+</Project>
