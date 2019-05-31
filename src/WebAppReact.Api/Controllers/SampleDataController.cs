@@ -8,7 +8,7 @@ using WebAppReact.Infrastructure;
 
 namespace WebAppReact.Api.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     public class SampleDataController : Controller
     {
         public SampleDataController(MoviePortalContext moviePortalContext)
@@ -22,7 +22,7 @@ namespace WebAppReact.Api.Controllers
         };
         private readonly MoviePortalContext _moviePortalContext;
 
-        [HttpGet("[action]")]
+        [HttpGet]
         public IEnumerable<WeatherForecast> WeatherForecasts(int startDateIndex)
         {
             var rng = new Random();

@@ -5,6 +5,8 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebAppReact.Api.Providers;
+using WebAppReact.Domain.Providers;
 using WebAppReact.Infrastructure;
 
 namespace WebAppReact.Api
@@ -29,14 +31,20 @@ namespace WebAppReact.Api
                 });
             });
 
+            services.AddTransient<IMovieProvider, MovieProvider>();
+
             services.AddMvc(options => options.EnableEndpointRouting = false)
-                .AddNewtonsoftJson();
+                .AddNewtonsoftJson(options =>
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
             // In production, the React files will be served from this directory
             services.AddSpaStaticFiles(configuration =>
             {
                 configuration.RootPath = "ClientApp/build";
             });
+
+            services.AddSwaggerGen(setup =>
+                setup.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Client API", Version = "v1" }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -59,20 +67,26 @@ namespace WebAppReact.Api
 
             app.UseMvc(routes =>
             {
-                routes.MapRoute(
-                    name: "default",
-                    template: "{controller}/{action=Index}/{id?}");
+                //routes.MapRoute(
+                //    name: "default",
+                //    template: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
+            //app.UseSpa(spa =>
+            //{
+            //    spa.Options.SourcePath = "ClientApp";
 
-                if (env.IsDevelopment())
+            //    if (env.IsDevelopment())
+            //    {
+            //        spa.UseReactDevelopmentServer(npmScript: "start");
+            //    }
+            //});
+
+            app.UseSwagger()
+                .UseSwaggerUI(setup =>
                 {
-                    spa.UseReactDevelopmentServer(npmScript: "start");
-                }
-            });
+                    setup.SwaggerEndpoint("/swagger/v1/swagger.json", "Movies API V1");
+                });
         }
     }
 }
