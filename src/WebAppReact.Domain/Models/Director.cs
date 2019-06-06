@@ -6,6 +6,6 @@ namespace WebAppReact.Domain.Models
     {
         public float Rating { get; set; }
 
-        public IEnumerable<Movie> Movies { get; set; }
+        public virtual ICollection<Movie> Movies { get; set; }
     }
 }

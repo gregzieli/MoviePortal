@@ -1,13 +1,15 @@
+using AutoMapper;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices.ReactDevelopmentServer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using WebAppReact.Api.Abstractions.Providers;
 using WebAppReact.Api.Providers;
-using WebAppReact.Domain.Providers;
+using WebAppReact.Domain.Repositories;
 using WebAppReact.Infrastructure;
+using WebAppReact.Infrastructure.Repositories;
 
 namespace WebAppReact.Api
 {
@@ -25,13 +27,20 @@ namespace WebAppReact.Api
         {
             services.AddDbContextPool<MoviePortalContext>(optionsAction =>
             {
-                optionsAction.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), serverOptions =>
+                optionsAction
+                .UseLazyLoadingProxies()
+                .UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), serverOptions =>
                 {
                     serverOptions.MigrationsAssembly("WebAppReact.Infrastructure");
                 });
             });
 
-            services.AddTransient<IMovieProvider, MovieProvider>();
+            services.AddAutoMapper(typeof(Startup));
+
+            services
+                .AddTransient<IMovieProvider, MovieProvider>()
+                .AddTransient<IMovieRepository, MovieRepository>()
+                ;
 
             services.AddMvc(options => options.EnableEndpointRouting = false)
                 .AddNewtonsoftJson(options =>

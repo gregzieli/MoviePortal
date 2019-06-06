@@ -17,10 +17,17 @@ namespace WebAppReact.Domain.Models
 
         public string Description { get; set; }
 
-        public IEnumerable<ActorMovie> Cast { get; set; }
+        public virtual ICollection<ActorMovie> Cast { get; set; }
 
-        public Director Director { get; set; }
+        public virtual Director Director { get; set; }
 
-        public IEnumerable<Review> Reviews { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
+
+        public void Rate(int rate, int userId)
+        {
+            // LOL need to come up with a rating algorithm xD
+            //  Ale to ok, bo trzeba powiazać użytkowników z ratingami i tak
+            throw new NotImplementedException();
+        }
     }
 }

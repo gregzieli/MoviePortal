@@ -6,8 +6,8 @@ namespace WebAppReact.Domain.Models.JoinTables
 
         public int ActorId { get; private set; }
 
-        public Movie Movie { get; set; }
+        public virtual Movie Movie { get; set; }
 
-        public Actor Actor { get; set; }
+        public virtual Actor Actor { get; set; }
     }
 }
