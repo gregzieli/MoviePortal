@@ -1,9 +1,12 @@
+using AutoMapper;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
+using WebAppReact.Api.Abstractions.Providers;
+using WebAppReact.Api.Models;
+using WebAppReact.Api.QueryObjects;
 using WebAppReact.Domain.Models;
-using WebAppReact.Domain.Providers;
-using WebAppReact.Domain.QueryObjects;
 using WebAppReact.Infrastructure;
 
 namespace WebAppReact.Api.Providers
@@ -11,29 +14,40 @@ namespace WebAppReact.Api.Providers
     public class MovieProvider : IMovieProvider
     {
         private readonly MoviePortalContext _movieContext;
+        private readonly IMapper _mapper;
 
-        public MovieProvider(MoviePortalContext movieContext)
+        public MovieProvider(MoviePortalContext movieContext, IMapper mapper)
         {
             _movieContext = movieContext;
+            _mapper = mapper;
         }
 
-        public async Task<IEnumerable<Movie>> GetMoviesAsync()
+        public async Task<IEnumerable<MovieItem>> GetMoviesAsync()
         {
-            return await _movieContext.Movies
-                .Include(x => x.Director)
-                .Include(x => x.Cast)
-                    .ThenInclude(x => x.Actor)
+            return await _mapper.ProjectTo<MovieItem>(_movieContext.Movies).ToListAsync();
+        }
+
+        public async Task<IEnumerable<MovieItem>> GetMoviesAsync(MovieFilter filter)
+        {
+            var query = new MovieQuery
+            {
+                Genre = filter.Genre,
+                Rating = filter.Rating,
+                Title = filter.Title,
+                Year = filter.Year
+            };
+
+            return await _mapper.ProjectTo<MovieItem>(_movieContext.Movies
+                .Where(query.AllFilters)
+                .OrderBy(x => x.PremiereDate)
+                .Skip(filter.Skip)
+                .Take(filter.Size))
                 .ToListAsync();
         }
 
-        public async Task<IEnumerable<Movie>> GetMoviesAsync(MovieQuery filter)
+        public async ValueTask<MovieDetail> GetMovieAsync(int id)
         {
-            return await _movieContext.Movies.ToListAsync();
-        }
-
-        public async Task<Movie> GetMovieAsync(int id)
-        {
-            return await _movieContext.Movies.FindAsync(id);
+            return await _mapper.ProjectTo<MovieDetail>(_movieContext.Movies).FirstOrDefaultAsync(x => x.Id == id);
         }
     }
 }

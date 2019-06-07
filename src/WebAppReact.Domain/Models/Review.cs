@@ -6,9 +6,9 @@ namespace WebAppReact.Domain.Models
     {
         public string Title { get; set; }
 
-        public Movie Movie { get; set; }
+        public virtual Movie Movie { get; set; }
 
-        public Author Author { get; set; }
+        public virtual Author Author { get; set; }
 
         public string Text { get; set; }
 

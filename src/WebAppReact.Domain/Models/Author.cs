@@ -4,6 +4,6 @@ namespace WebAppReact.Domain.Models
 {
     public class Author : Person
     {
-        public IEnumerable<Review> Reviews { get; set; }
+        public virtual ICollection<Review> Reviews { get; set; }
     }
 }
