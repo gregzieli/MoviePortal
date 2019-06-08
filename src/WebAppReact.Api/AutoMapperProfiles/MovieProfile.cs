@@ -1,6 +1,6 @@
 using AutoMapper;
 using System.Linq;
-using WebAppReact.Api.Models;
+using WebAppReact.Contract;
 using WebAppReact.Domain.Models;
 
 namespace WebAppReact.Api.AutoMapperProfiles

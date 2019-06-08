@@ -1,13 +1,7 @@
 using Microsoft.AspNetCore.Mvc;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Http.Description;
 using WebAppReact.Api.Abstractions.Providers;
-using WebAppReact.Api.Models;
-using WebAppReact.Api.QueryObjects;
-using WebAppReact.Domain.Models;
+using WebAppReact.Contract;
 using WebAppReact.Domain.Repositories;
 
 namespace WebAppReact.Api.Controllers

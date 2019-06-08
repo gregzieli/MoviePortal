@@ -1,7 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
-using WebAppReact.Api.Models;
+using WebAppReact.Contract;
 using WebAppReact.Domain.Abstractions.Query;
 using WebAppReact.Domain.Models;
 

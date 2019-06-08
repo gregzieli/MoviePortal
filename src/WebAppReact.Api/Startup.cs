@@ -42,18 +42,12 @@ namespace WebAppReact.Api
                 .AddTransient<IMovieRepository, MovieRepository>()
                 ;
 
-            services.AddMvc(options => options.EnableEndpointRouting = false)
+            services.AddControllers()
                 .AddNewtonsoftJson(options =>
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
-            // In production, the React files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/build";
-            });
-
             services.AddSwaggerGen(setup =>
-                setup.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Client API", Version = "v1" }));
+                setup.SwaggerDoc("v1", new Microsoft.OpenApi.Models.OpenApiInfo { Title = "Web API", Version = "v1" }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -65,35 +59,25 @@ namespace WebAppReact.Api
             }
             else
             {
-                app.UseExceptionHandler("/Error");
                 // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
                 app.UseHsts();
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            app.UseSpaStaticFiles();
 
-            app.UseMvc(routes =>
+            app.UseRouting();
+
+            app.UseAuthorization();
+
+            app.UseEndpoints(endpoints =>
             {
-                //routes.MapRoute(
-                //    name: "default",
-                //    template: "{controller}/{action=Index}/{id?}");
+                endpoints.MapControllers();
             });
-
-            //app.UseSpa(spa =>
-            //{
-            //    spa.Options.SourcePath = "ClientApp";
-
-            //    if (env.IsDevelopment())
-            //    {
-            //        spa.UseReactDevelopmentServer(npmScript: "start");
-            //    }
-            //});
 
             app.UseSwagger()
                 .UseSwaggerUI(setup =>
                 {
+                    setup.RoutePrefix = "";
                     setup.SwaggerEndpoint("/swagger/v1/swagger.json", "Movies API V1");
                 });
         }

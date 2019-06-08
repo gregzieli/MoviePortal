@@ -15,7 +15,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppReact.Domain", "src\W
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppReact.Infrastructure", "src\WebAppReact.Infrastructure\WebAppReact.Infrastructure.csproj", "{9E066A7A-9697-4554-9566-F68A80628B65}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppReact.Api", "src\WebAppReact.Api\WebAppReact.Api.csproj", "{05B43467-3B27-4680-A231-629E0635A098}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppReact.Api", "src\WebAppReact.Api\WebAppReact.Api.csproj", "{05B43467-3B27-4680-A231-629E0635A098}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppReact.Client", "src\WebAppReact.Client\WebAppReact.Client.csproj", "{34B1EF8F-9536-4F2B-B034-636512C03259}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppReact.Contract", "src\WebAppReact.Contract\WebAppReact.Contract.csproj", "{F8BB5563-2223-48ED-AC1E-AF262DE4AB60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +39,14 @@ Global
 		{05B43467-3B27-4680-A231-629E0635A098}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{05B43467-3B27-4680-A231-629E0635A098}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{05B43467-3B27-4680-A231-629E0635A098}.Release|Any CPU.Build.0 = Release|Any CPU
+		{34B1EF8F-9536-4F2B-B034-636512C03259}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{34B1EF8F-9536-4F2B-B034-636512C03259}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{34B1EF8F-9536-4F2B-B034-636512C03259}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{34B1EF8F-9536-4F2B-B034-636512C03259}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F8BB5563-2223-48ED-AC1E-AF262DE4AB60}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F8BB5563-2223-48ED-AC1E-AF262DE4AB60}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F8BB5563-2223-48ED-AC1E-AF262DE4AB60}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F8BB5563-2223-48ED-AC1E-AF262DE4AB60}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -43,6 +55,8 @@ Global
 		{D346D64C-3757-4662-B9E2-85363386A640} = {07AB674E-D8A7-4A39-BCD3-04A6657CCB93}
 		{9E066A7A-9697-4554-9566-F68A80628B65} = {07AB674E-D8A7-4A39-BCD3-04A6657CCB93}
 		{05B43467-3B27-4680-A231-629E0635A098} = {07AB674E-D8A7-4A39-BCD3-04A6657CCB93}
+		{34B1EF8F-9536-4F2B-B034-636512C03259} = {07AB674E-D8A7-4A39-BCD3-04A6657CCB93}
+		{F8BB5563-2223-48ED-AC1E-AF262DE4AB60} = {07AB674E-D8A7-4A39-BCD3-04A6657CCB93}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {9F817BF3-E3A7-4125-93AA-44DEDAF1264C}
