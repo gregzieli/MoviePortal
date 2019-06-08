@@ -13,6 +13,7 @@ import { ApiAuthorizationModule } from 'src/api-authorization/api-authorization.
 import { AuthorizeGuard } from 'src/api-authorization/authorize.guard';
 import { AuthorizeInterceptor } from 'src/api-authorization/authorize.interceptor';
 import { MoviesComponent } from './movie/movies.component';
+import { MovieDetailsComponent } from './movie-details/movie-details.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +22,8 @@ import { MoviesComponent } from './movie/movies.component';
     HomeComponent,
     CounterComponent,
     FetchDataComponent,
-    MoviesComponent
+    MoviesComponent,
+    MovieDetailsComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -33,6 +35,7 @@ import { MoviesComponent } from './movie/movies.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent, canActivate: [AuthorizeGuard] },
       { path: 'movies', component: MoviesComponent },
+      { path: 'movies/:id', component: MovieDetailsComponent },
     ])
   ],
   providers: [

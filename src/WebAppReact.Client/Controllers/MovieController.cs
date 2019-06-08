@@ -24,8 +24,8 @@ namespace WebAppReact.Client.Controllers
             return await _movieApi.GetMovies();
         }
 
-        [HttpGet]
-        public async Task<MovieDetail> GetMovies(int id)
+        [HttpGet("{id}")]
+        public async Task<MovieDetail> GetMovie(int id)
         {
             return await _movieApi.GetMovie(id);
         }

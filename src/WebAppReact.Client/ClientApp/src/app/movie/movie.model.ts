@@ -8,7 +8,11 @@ export interface MovieItem {
 }
 
 export interface MovieDetail {
-    
+    id: number;
+    title: string;
+    premiereDate: Date;
+    rating: number;
+    genre: Genre;
 }
 
 export interface MovieFilter {
