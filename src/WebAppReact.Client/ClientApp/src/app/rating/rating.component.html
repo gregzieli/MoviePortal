@@ -1,0 +1,17 @@
+<div *ngIf="movie">
+    <h1>{{ movie.title }}</h1>
+    <br>
+    
+    <div>
+      <span>Current rating:</span>
+      <span>{{ movie.rating }}</span>
+    </div>
+    <form>
+        <input required type="number" [value]="rate" (input)="rate = $event.target.value"> 
+        <input type="text" [value]="title" (input)="title = $event.target.value">
+        <input type="text" [value]="text" (input)="text = $event.target.value">
+        <input type="submit" (click)="rateMovie()">
+    </form>
+  </div>
+  
+  <h1 *ngIf="!movie">...</h1>

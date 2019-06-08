@@ -1,7 +1,17 @@
-<h2>Movie Details</h2>
-
 <div *ngIf="movie">
-  <h3>{{ movie.title }}</h3>
+  <h1>{{ movie.title }}</h1>
+  <br>
+  <dl>
+    <dt>Premiere:</dt><dd>{{ movie.premiereDate | date }}</dd>
+    <dt>Genre:</dt><dd>{{ movie.genre }}</dd>
+  </dl>
+  <div>
+    <span>Current rating:</span>
+    <span>{{ movie.rating }}</span>
+    <button [routerLink]="['/rate', movie.id]">Rate the movie</button>
+  </div>
   <p>{{ movie.description }}</p>
 
 </div>
+
+<h1 *ngIf="!movie">...</h1>
