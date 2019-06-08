@@ -1,0 +1,25 @@
+<h1 ng-click="getMovie(1)">Movies</h1>
+
+<p *ngIf="!movies"><em>Loading...</em></p>
+
+<table class='table table-striped' *ngIf="movies">
+  <thead>
+    <tr>
+      <th>Title</th>
+      <th>Premiere</th>
+      <th>Rating</th>
+      <th>Genre</th>
+      <th>Review count</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let movie of movies" ng-click="getMovie(movie.id)">
+      <td>{{ movie.title }}</td>
+      <td>{{ movie.premiereDate | date }}</td>
+      <td>{{ movie.rating }}</td>
+      <td>{{ movie.genre }}</td>
+      <td>{{ movie.reviewCount }}</td>
+    </tr>
+  </tbody>
+</table>
+

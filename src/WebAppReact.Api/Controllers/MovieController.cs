@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.Threading.Tasks;
 using WebAppReact.Api.Abstractions.Providers;
 using WebAppReact.Contract;
@@ -19,33 +20,28 @@ namespace WebAppReact.Api.Controllers
             _movieRepository = movieRepository;
         }
 
-        [HttpGet]
-        public async Task<IActionResult> GetMovie(int id)
+        [HttpGet("{id}")]
+        public async Task<MovieDetail> GetMovie(int id)
         {
             var movie = await _movieProvider.GetMovieAsync(id);
 
-            return movie is null ? NotFound() : (IActionResult)Ok(movie);
+            return movie;
         }
 
         [HttpPost]
-        public async Task<IActionResult> GetMovies(MovieFilter filter)
+        public async Task<IEnumerable<MovieItem>> GetMovies(MovieFilter filter)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var movies = await _movieProvider.GetMoviesAsync(filter);
 
-            return Ok(movies);
+            return movies;
         }
 
         [HttpGet]
-        public async Task<IActionResult> GetMovies()
+        public async Task<IEnumerable<MovieItem>> GetMovies()
         {
             var movies = await _movieProvider.GetMoviesAsync();
 
-            return Ok(movies);
+            return movies;
         }
 
         [HttpPut]// TODO: Authorize

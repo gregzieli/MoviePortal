@@ -14,6 +14,7 @@ using Microsoft.Extensions.Hosting;
 using Refit;
 using WebAppReact.Client.Apis;
 using System;
+using Newtonsoft.Json.Converters;
 
 namespace WebAppReact.Client
 {
@@ -42,7 +43,11 @@ namespace WebAppReact.Client
             services.AddAuthentication()
                 .AddIdentityServerJwt();
             services.AddMvc(options => options.EnableEndpointRouting = false)
-                .AddNewtonsoftJson();
+                .AddNewtonsoftJson(options =>
+                {
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                    options.SerializerSettings.Converters.Add(new StringEnumConverter());
+                });
 
             // In production, the Angular files will be served from this directory
             services.AddSpaStaticFiles(configuration =>

@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using System.Security.Claims;
 using Microsoft.AspNetCore.Identity;
 using WebAppReact.Client.Apis;
+using Microsoft.Extensions.Logging;
 
 namespace WebAppReact.Client.Controllers
 {
@@ -14,9 +15,10 @@ namespace WebAppReact.Client.Controllers
     [Route("api/[controller]")]
     public class SampleDataController : Controller
     {
-        public SampleDataController(IMovieApi movieApi)
+        public SampleDataController(IMovieApi movieApi, ILogger<SampleDataController> logger)
         {
             _movieApi = movieApi;
+            _logger = logger;
         }
 
         private static string[] Summaries = new[]
@@ -24,13 +26,12 @@ namespace WebAppReact.Client.Controllers
             "Freezing", "Bracing", "Chilly", "Cool", "Mild", "Warm", "Balmy", "Hot", "Sweltering", "Scorching"
         };
         private readonly IMovieApi _movieApi;
+        private readonly ILogger<SampleDataController> _logger;
 
         [HttpGet("[action]")]
         public IEnumerable<WeatherForecast> WeatherForecasts()
         {
             var userId = User.FindFirstValue(ClaimTypes.NameIdentifier);
-
-            var a = _movieApi.GetMovies();
 
             var rng = new Random();
             return Enumerable.Range(1, 5).Select(index => new WeatherForecast
