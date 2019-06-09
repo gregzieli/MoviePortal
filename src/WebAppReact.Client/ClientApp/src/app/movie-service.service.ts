@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { Inject } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { MovieDetail } from './movie/movie.model';
-import { RateInput } from './rating/rate.model';
+import { ReviewDto } from './rating/rate.model';
 
 @Injectable({
   providedIn: 'root'
@@ -15,7 +15,7 @@ export class MovieService {
     return this.http.get<MovieDetail>(`${this.baseUrl}api/Movie/GetMovie/${id}`);
   }
 
-  rateMovie(input: RateInput) : Observable<boolean> {
-    return this.http.post<boolean>(`${this.baseUrl}api/Movie/RateMovie`, input);
+  rateMovie(input: ReviewDto) : Observable<boolean> {
+    return this.http.post<boolean>(`${this.baseUrl}api/Review/RateMovie`, input);
   }
 }

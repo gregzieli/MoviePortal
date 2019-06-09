@@ -13,9 +13,6 @@ namespace WebAppReact.Infrastructure.TypeConfigurations
 
             builder.HasKey(x => x.Id);
 
-            builder.Property(x => x.Id)
-                .UseSqlServerIdentityColumn();
-
             builder.HasMany(x => x.Reviews).WithOne(x => x.Author);
         }
     }

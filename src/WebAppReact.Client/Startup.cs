@@ -55,6 +55,10 @@ namespace WebAppReact.Client
                 configuration.RootPath = "ClientApp/dist";
             });
 
+
+            services.AddTransient<IUserRepository, UserRepository>();
+
+
             services.AddRefitClient<IMovieApi>()
                 .ConfigureHttpClient(setup => setup.BaseAddress = new Uri(Configuration["ServiceEndpoints:Movies"]));
         }

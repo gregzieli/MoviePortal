@@ -9,7 +9,7 @@ namespace WebAppReact.Client.Controllers
 {
     //[Authorize]
     [Route("api/[controller]/[action]")]
-    public class MovieController
+    public class MovieController : Controller
     {
         private readonly IMovieApi _movieApi;
 

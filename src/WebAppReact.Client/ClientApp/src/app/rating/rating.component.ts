@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDetail } from '../movie/movie.model';
-import { RateInput } from './rate.model';
+import { ReviewDto } from './rate.model';
 
 @Component({
   selector: 'app-rating',
@@ -27,7 +27,7 @@ export class RatingComponent implements OnInit {
   }
 
   rateMovie() {
-    let input = new RateInput();
+    let input = new ReviewDto();
     input.movieId = this.movie.id;
     input.rate = this.rate;
     input.reviewText = this.text;

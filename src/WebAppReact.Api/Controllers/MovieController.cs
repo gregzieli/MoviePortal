@@ -43,23 +43,5 @@ namespace WebAppReact.Api.Controllers
 
             return movies;
         }
-
-        [HttpPut]// TODO: Authorize
-        public async Task<IActionResult> RateMovie(int movieId, int rate)
-        {
-            // TODO: get the user id
-            var userId = 1;
-            var movie = await _movieRepository.FindByIdAsync(movieId);
-
-            if (movie is null)
-            {
-                return NotFound();
-            }
-
-            movie.Rate(rate, userId);
-            await _movieRepository.UnitOfWork.SaveChangesAsync();
-
-            return Ok();
-        }
     }
 }

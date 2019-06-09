@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAppReact.Infrastructure;
 
 namespace WebAppReact.Infrastructure.Migrations
 {
     [DbContext(typeof(MoviePortalContext))]
-    partial class MoviePortalContextModelSnapshot : ModelSnapshot
+    [Migration("20190609124143_deleteAuthor")]
+    partial class deleteAuthor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,17 +38,6 @@ namespace WebAppReact.Infrastructure.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Actors");
-                });
-
-            modelBuilder.Entity("WebAppReact.Domain.Models.Author", b =>
-                {
-                    b.Property<string>("Id");
-
-                    b.Property<string>("Name");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Authors");
                 });
 
             modelBuilder.Entity("WebAppReact.Domain.Models.Director", b =>
@@ -116,8 +107,6 @@ namespace WebAppReact.Infrastructure.Migrations
                         .HasAnnotation("SqlServer:IdentitySeed", 1)
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("AuthorId");
-
                     b.Property<int?>("MovieId");
 
                     b.Property<int>("Rating");
@@ -127,8 +116,6 @@ namespace WebAppReact.Infrastructure.Migrations
                     b.Property<string>("Title");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("AuthorId");
 
                     b.HasIndex("MovieId");
 
@@ -159,10 +146,6 @@ namespace WebAppReact.Infrastructure.Migrations
 
             modelBuilder.Entity("WebAppReact.Domain.Models.Review", b =>
                 {
-                    b.HasOne("WebAppReact.Domain.Models.Author", "Author")
-                        .WithMany("Reviews")
-                        .HasForeignKey("AuthorId");
-
                     b.HasOne("WebAppReact.Domain.Models.Movie", "Movie")
                         .WithMany("Reviews")
                         .HasForeignKey("MovieId");

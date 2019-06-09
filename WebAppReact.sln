@@ -17,9 +17,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppReact.Infrastructure"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppReact.Api", "src\WebAppReact.Api\WebAppReact.Api.csproj", "{05B43467-3B27-4680-A231-629E0635A098}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppReact.Client", "src\WebAppReact.Client\WebAppReact.Client.csproj", "{34B1EF8F-9536-4F2B-B034-636512C03259}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppReact.Client", "src\WebAppReact.Client\WebAppReact.Client.csproj", "{34B1EF8F-9536-4F2B-B034-636512C03259}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppReact.Contract", "src\WebAppReact.Contract\WebAppReact.Contract.csproj", "{F8BB5563-2223-48ED-AC1E-AF262DE4AB60}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppReact.Contract", "src\WebAppReact.Contract\WebAppReact.Contract.csproj", "{F8BB5563-2223-48ED-AC1E-AF262DE4AB60}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
