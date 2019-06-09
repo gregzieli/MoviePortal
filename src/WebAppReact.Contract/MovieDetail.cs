@@ -23,5 +23,8 @@ namespace WebAppReact.Contract
         public IEnumerable<ActorDto> Cast { get; set; }
 
         public IEnumerable<ReviewDto> Reviews { get; set; }
+
+        public string Image { get; set; }
+
     }
 }

@@ -5,6 +5,7 @@ export interface MovieItem {
     rating: number;
     reviewCount: number;
     genre: Genre;
+    image: string;
 }
 
 export interface MovieDetail {
@@ -13,6 +14,7 @@ export interface MovieDetail {
     premiereDate: Date;
     rating: number;
     genre: Genre;
+    image: string;
 }
 
 export interface MovieFilter {

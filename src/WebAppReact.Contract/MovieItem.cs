@@ -20,5 +20,7 @@ namespace WebAppReact.Contract
         public string DirectorName { get; set; }
 
         public int ReviewCount { get; set; }
+
+        public string Image { get; set; }
     }
 }

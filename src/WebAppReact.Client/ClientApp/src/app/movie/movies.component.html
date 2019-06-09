@@ -17,7 +17,7 @@
     <tr *ngFor="let movie of movies" [routerLink]="['/movies', movie.id]" scope="row">
       <td>{{ movie.title }}</td>
       <td >
-          <img src="{{movie.image}}" class="img-fluid img-thumbnail" alt="{{movie.title}}">
+          <img src="{{movie.image}}" class="img-fluid img-thumbnail" alt="{{movie.title}}" style="width: 5em;">
       </td>
       <td>{{ movie.premiereDate | date }}</td>
       <td>{{ movie.rating }}</td>

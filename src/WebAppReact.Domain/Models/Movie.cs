@@ -12,7 +12,7 @@ namespace WebAppReact.Domain.Models
 
         public DateTime PremiereDate { get; set; }
 
-        public double Rating { get; set; } // TODO: make this a getter
+        public double Rating { get; set; } 
 
         public Genre Genre { get; set; }
 
@@ -23,6 +23,8 @@ namespace WebAppReact.Domain.Models
         public virtual Director Director { get; set; }
 
         public virtual ICollection<Review> Reviews { get; set; }
+
+        public string Image { get; set; }
 
         public void UpdateRating()
         {

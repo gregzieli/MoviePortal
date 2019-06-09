@@ -24,7 +24,9 @@ namespace WebAppReact.Api.Providers
 
         public async Task<IEnumerable<MovieItem>> GetMoviesAsync()
         {
-            return await _mapper.ProjectTo<MovieItem>(_movieContext.Movies).ToListAsync();
+            return await _mapper.ProjectTo<MovieItem>(_movieContext.Movies)
+                .OrderByDescending(x => x.PremiereDate).ThenBy(x => x.Title)
+                .ToListAsync();
         }
 
         public async Task<IEnumerable<MovieItem>> GetMoviesAsync(MovieFilter filter)
@@ -39,7 +41,7 @@ namespace WebAppReact.Api.Providers
 
             return await _mapper.ProjectTo<MovieItem>(_movieContext.Movies
                 .Where(query.AllFilters)
-                .OrderBy(x => x.PremiereDate)
+                .OrderBy(x => x.PremiereDate).ThenBy(x => x.Title)
                 .Skip(filter.Skip)
                 .Take(filter.Size))
                 .ToListAsync();
