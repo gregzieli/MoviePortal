@@ -1,3 +1,5 @@
+import { MovieDetail } from "../movie/movie.model";
+
 export class ReviewDto {
     id: number;
     movieId: number;
@@ -14,4 +16,12 @@ export class ReviewItem {
     text: string;
     authorName: string;
     reviewDate: Date;
+}
+
+export class ReviewDetail {
+    movie: MovieDetail;
+    rating: number;
+    title: string;
+    text: string;
+    authorName: string;
 }

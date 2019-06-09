@@ -42,5 +42,12 @@ namespace WebAppReact.Client.Controllers
 
             return reviews;
         }
+
+        [HttpGet("{movieId}")]
+        public async Task<ReviewDetail> GetOwnReview(int movieId)
+        {
+            var user = await _userRepository.FindByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
+            return await _movieApi.GetReview(user.Id, user.UserName, movieId);
+        }
     }
 }

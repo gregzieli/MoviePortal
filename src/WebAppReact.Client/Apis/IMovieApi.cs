@@ -20,11 +20,8 @@ namespace WebAppReact.Client.Apis
         [Post("/api/Review/RateMovie")]
         Task<bool> RateMovie([Body]ReviewDto review);
 
-        [Get("/api/Review/GetOwnReview")]
-        Task<ReviewDto> GetOwnReview(int movieId);
-
-        [Get("/api/Review/GetReview")]
-        Task<ReviewDto> GetReview(int id);
+        [Get("/api/Review/GetReview/{userId}/{userName}/{movieId}")]
+        Task<ReviewDetail> GetReview(string userId, string userName, int movieId);
 
         [Get("/api/Review/GetReviews/{movieId}")]
         Task<IEnumerable<ReviewItem>> GetReviews(int movieId);

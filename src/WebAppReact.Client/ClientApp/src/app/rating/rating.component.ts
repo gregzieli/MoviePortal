@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MovieService } from '../movie-service.service';
 import { ActivatedRoute } from '@angular/router';
 import { MovieDetail } from '../movie/movie.model';
-import { ReviewDto } from './rate.model';
+import { ReviewDto, ReviewDetail } from './rate.model';
 
 @Component({
   selector: 'app-rating',
@@ -11,6 +11,7 @@ import { ReviewDto } from './rate.model';
 })
 export class RatingComponent implements OnInit {
   movie: MovieDetail;
+  review: ReviewDetail;
   public rating: number;
   public title: string;
   public textValue: string;
@@ -22,6 +23,15 @@ export class RatingComponent implements OnInit {
       this.movieService.getMovie(+params.get("id"))
         .subscribe(x => {
           this.movie = x;
+        }, err => console.log(err));        
+    });
+  }
+
+  ngOnInit2() {
+    this.route.paramMap.subscribe(params => {
+      this.movieService.getReviewDetail(+params.get("id"))
+        .subscribe(x => {
+          this.review = x;
         }, err => console.log(err));        
     });
   }

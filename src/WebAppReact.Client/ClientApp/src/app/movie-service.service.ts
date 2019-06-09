@@ -3,7 +3,7 @@ import { Observable } from "rxjs";
 import { Inject } from '@angular/core';
 import { Injectable } from '@angular/core';
 import { MovieDetail } from './movie/movie.model';
-import { ReviewDto, ReviewItem } from './rating/rate.model';
+import { ReviewDto, ReviewItem, ReviewDetail } from './rating/rate.model';
 
 @Injectable({
   providedIn: 'root'
@@ -21,5 +21,9 @@ export class MovieService {
 
   getReviews(movieId: number): Observable<ReviewItem[]> {
     return this.http.get<ReviewItem[]>(`${this.baseUrl}api/Review/GetReviews/${movieId}`);
+  }
+
+  getReviewDetail(movieId: number): Observable<ReviewDetail> {
+    return this.http.get<ReviewDetail>(`${this.baseUrl}api/Review/GetOwnReview/${movieId}`);
   }
 }
