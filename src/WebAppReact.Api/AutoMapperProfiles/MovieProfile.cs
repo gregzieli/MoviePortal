@@ -19,6 +19,10 @@ namespace WebAppReact.Api.AutoMapperProfiles
             CreateMap<Director, DirectorDto>();
             CreateMap<Actor, ActorDto>();
             CreateMap<Review, ReviewDto>();
+
+            CreateMap<Review, ReviewItem>()
+                .ForMember(dest => dest.AuthorName, x => x.MapFrom(src => src.Author.Name))
+                ;
         }
     }
 }

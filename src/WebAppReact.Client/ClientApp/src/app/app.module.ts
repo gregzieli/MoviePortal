@@ -15,6 +15,7 @@ import { AuthorizeInterceptor } from 'src/api-authorization/authorize.intercepto
 import { MoviesComponent } from './movie/movies.component';
 import { MovieDetailsComponent } from './movie-details/movie-details.component';
 import { RatingComponent } from './rating/rating.component';
+import { ReviewListComponent } from './review-list/review-list.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { RatingComponent } from './rating/rating.component';
     FetchDataComponent,
     MoviesComponent,
     MovieDetailsComponent,
-    RatingComponent
+    RatingComponent,
+    ReviewListComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),

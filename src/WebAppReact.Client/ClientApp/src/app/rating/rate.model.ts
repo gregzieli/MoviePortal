@@ -4,4 +4,14 @@ export class ReviewDto {
     rating: number;
     title: string;
     text: string;
+    authorName: string;
+    reviewDate: Date;
+}
+
+export class ReviewItem {
+    rating: number;
+    title: string;
+    text: string;
+    authorName: string;
+    reviewDate: Date;
 }

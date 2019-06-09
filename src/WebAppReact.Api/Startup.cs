@@ -39,6 +39,7 @@ namespace WebAppReact.Api
 
             services
                 .AddTransient<IMovieProvider, MovieProvider>()
+                .AddTransient<IReviewProvider, ReviewProvider>()
                 .AddTransient<IMovieRepository, MovieRepository>()
                 .AddTransient<IAuthorRepository, AuthorRepository>()
                 .AddTransient<IReviewRepository, ReviewRepository>()

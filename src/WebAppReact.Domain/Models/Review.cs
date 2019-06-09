@@ -23,6 +23,7 @@ namespace WebAppReact.Domain.Models
             Text = text;
             Rating = rating;
             ReviewDate = DateTime.UtcNow;
+            Movie.UpdateRating();
         }
     }
 }

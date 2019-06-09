@@ -2,6 +2,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using WebAppReact.Client.Apis;
@@ -32,6 +33,14 @@ namespace WebAppReact.Client.Controllers
             review.UserId = user.Id;
             review.AuthorName = user.UserName;
             return await _movieApi.RateMovie(review);
+        }
+
+        [HttpGet("{movieId}")]
+        public async Task<IEnumerable<ReviewItem>> GetReviews(int movieId)
+        {
+            var reviews = await _movieApi.GetReviews(movieId);
+
+            return reviews;
         }
     }
 }

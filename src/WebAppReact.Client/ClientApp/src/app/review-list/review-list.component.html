@@ -1,0 +1,15 @@
+
+<div *ngIf="!reviews">...</div>
+<div *ngIf="!reviews?.length">No reviews... Rate the movie!</div>
+
+<div class="list-group">
+  <div *ngFor="let review of reviews;" class="list-group-item list-group-item-action flex-column align-items-start">
+    <div class="d-flex justify-content-between">
+      <h5 class="mb-1">{{review.title}}</h5>
+      <small>{{review.reviewDate | date}}</small>
+    </div>
+    <p class="mb-1">{{review.text}}</p>
+    <span class="badge badge-primary badge-pill">Rating: {{review.rating}}</span>
+    <small>             {{review.authorName}}</small>
+  </div>
+</div>

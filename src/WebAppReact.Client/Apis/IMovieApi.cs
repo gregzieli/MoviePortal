@@ -26,7 +26,7 @@ namespace WebAppReact.Client.Apis
         [Get("/api/Review/GetReview")]
         Task<ReviewDto> GetReview(int id);
 
-        [Get("/api/Review/GetReviews")]
-        Task<IEnumerable<ReviewDto>> GetReviews(int id);
+        [Get("/api/Review/GetReviews/{movieId}")]
+        Task<IEnumerable<ReviewItem>> GetReviews(int movieId);
     }
 }

@@ -6,7 +6,7 @@
       <span>Current rating:</span>
       <span>{{ movie.rating }}</span>
     </div>
-    <form>
+    <form #ratingForm="ngForm">
         <input required type="number" [(ngModel)]="rating" name="rating"> 
         <input type="text" [(ngModel)]="title" name="title">
         <textarea ref-textarea [(ngModel)]="textValue" rows="10" name="textValue"></textarea>

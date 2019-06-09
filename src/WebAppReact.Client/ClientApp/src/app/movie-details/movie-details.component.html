@@ -5,12 +5,19 @@
     <dt>Premiere:</dt><dd>{{ movie.premiereDate | date }}</dd>
     <dt>Genre:</dt><dd>{{ movie.genre }}</dd>
   </dl>
+  <h4>Description:</h4>
+  <p>{{ movie.description }}</p>
+
+  <br>
   <div>
     <span>Current rating:</span>
-    <span>{{ movie.rating }}</span>
+    <span> {{ movie.rating }}</span>
+    <br>
     <button [routerLink]="['/rate', movie.id]">Rate the movie</button>
   </div>
-  <p>{{ movie.description }}</p>
+  <br>
+  <h4>Reviews:</h4>
+  <app-review-list [movieId]="movie.id"></app-review-list>
 
 </div>
 
