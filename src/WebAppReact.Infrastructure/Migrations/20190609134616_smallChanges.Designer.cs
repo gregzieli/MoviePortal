@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebAppReact.Infrastructure;
 
 namespace WebAppReact.Infrastructure.Migrations
 {
     [DbContext(typeof(MoviePortalContext))]
-    partial class MoviePortalContextModelSnapshot : ModelSnapshot
+    [Migration("20190609134616_smallChanges")]
+    partial class smallChanges
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

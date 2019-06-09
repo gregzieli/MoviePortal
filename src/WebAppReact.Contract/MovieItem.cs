@@ -11,7 +11,7 @@ namespace WebAppReact.Contract
 
         public DateTime PremiereDate { get; set; }
 
-        public float Rating { get; set; }
+        public double Rating { get; set; }
 
         public Genre Genre { get; set; }
 

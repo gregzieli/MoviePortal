@@ -18,7 +18,7 @@ namespace WebAppReact.Client.Apis
         Task<IEnumerable<MovieItem>> GetMovies([Body]MovieFilter filter);
 
         [Post("/api/Review/RateMovie")]
-        Task<IActionResult> RateMovie([Body]ReviewDto review);
+        Task<bool> RateMovie([Body]ReviewDto review);
 
         [Get("/api/Review/GetOwnReview")]
         Task<ReviewDto> GetOwnReview(int movieId);

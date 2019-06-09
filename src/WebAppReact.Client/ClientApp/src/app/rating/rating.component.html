@@ -7,9 +7,10 @@
       <span>{{ movie.rating }}</span>
     </div>
     <form>
-        <input required type="number" [value]="rate" (input)="rate = $event.target.value"> 
-        <input type="text" [value]="title" (input)="title = $event.target.value">
-        <input type="text" [value]="text" (input)="text = $event.target.value">
+        <input required type="number" [(ngModel)]="rating" name="rating"> 
+        <input type="text" [(ngModel)]="title" name="title">
+        <textarea ref-textarea [(ngModel)]="textValue" rows="10" name="textValue"></textarea>
+        <br/>
         <input type="submit" (click)="rateMovie()">
     </form>
   </div>

@@ -11,9 +11,9 @@ import { ReviewDto } from './rate.model';
 })
 export class RatingComponent implements OnInit {
   movie: MovieDetail;
-  public rate: number;
-  public title: string = "";
-  public text: string = "";
+  public rating: number;
+  public title: string;
+  public textValue: string;
 
   constructor(private route: ActivatedRoute, private movieService: MovieService) { }
 
@@ -27,15 +27,16 @@ export class RatingComponent implements OnInit {
   }
 
   rateMovie() {
+    debugger
     let input = new ReviewDto();
     input.movieId = this.movie.id;
-    input.rate = this.rate;
-    input.reviewText = this.text;
-    input.reviewTitle = this.title;
+    input.rating = this.rating;
+    input.text = this.textValue;
+    input.title = this.title;
 
     this.movieService.rateMovie(input)
       .subscribe(x => {
-        console.log(x);
+        location.href = "/movies/" + this.movie.id;
       }, err => console.log(err));
   }
 

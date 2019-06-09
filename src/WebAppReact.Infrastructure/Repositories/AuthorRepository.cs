@@ -15,10 +15,13 @@ namespace WebAppReact.Infrastructure.Repositories
             _context = context;
         }
 
-        public async Task<Author> FindByIdAsync(string id)
+        public async Task<Author> GetAsync(string id)
         {
-            throw new System.Exception();
-           // return await _context.Authors.FindAsync(id);
+            var author = await _context.Authors.FindAsync(id);
+            return author ?? new Author
+            {
+                Id = id
+            };
         }
     }
 }

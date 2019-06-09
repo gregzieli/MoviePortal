@@ -25,7 +25,7 @@ namespace WebAppReact.Client.Controllers
 
         [HttpPost]
         [Authorize]
-        public async Task<IActionResult> RateMovie([FromBody] ReviewDto review)
+        public async Task<bool> RateMovie([FromBody] ReviewDto review)
         {
             var user = await _userRepository.FindByIdAsync(User.FindFirstValue(ClaimTypes.NameIdentifier));
 

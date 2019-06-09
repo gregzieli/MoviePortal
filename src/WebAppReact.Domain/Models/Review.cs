@@ -1,3 +1,4 @@
+using System;
 using WebAppReact.Domain.Abstractions;
 
 namespace WebAppReact.Domain.Models
@@ -13,5 +14,15 @@ namespace WebAppReact.Domain.Models
         public string Text { get; set; }
 
         public int Rating { get; set; }
+
+        public DateTime ReviewDate { get; set; }
+
+        public void Update(string title, string text, int rating)
+        {
+            Title = title;
+            Text = text;
+            Rating = rating;
+            ReviewDate = DateTime.UtcNow;
+        }
     }
 }

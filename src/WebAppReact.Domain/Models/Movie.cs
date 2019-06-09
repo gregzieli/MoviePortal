@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using WebAppReact.Domain.Abstractions;
 using WebAppReact.Domain.Models.JoinTables;
 
@@ -11,7 +12,7 @@ namespace WebAppReact.Domain.Models
 
         public DateTime PremiereDate { get; set; }
 
-        public float Rating { get; set; }
+        public double Rating { get; set; } // TODO: make this a getter
 
         public Genre Genre { get; set; }
 
@@ -23,11 +24,9 @@ namespace WebAppReact.Domain.Models
 
         public virtual ICollection<Review> Reviews { get; set; }
 
-        public void Rate(int rate, int userId)
+        public void UpdateRating()
         {
-            // LOL need to come up with a rating algorithm xD
-            //  Ale to ok, bo trzeba powiazać użytkowników z ratingami i tak
-            throw new NotImplementedException();
+            Rating = Reviews.Average(x => (double?)x.Rating) ?? 0;
         }
     }
 }

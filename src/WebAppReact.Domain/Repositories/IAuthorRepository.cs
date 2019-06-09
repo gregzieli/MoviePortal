@@ -6,6 +6,6 @@ namespace WebAppReact.Domain.Repositories
 {
     public interface IAuthorRepository : IRepository<Author>
     {
-        Task<Author> FindByIdAsync(string id);
+        Task<Author> GetAsync(string id);
     }
 }
