@@ -13,7 +13,7 @@
     <span>Current rating:</span>
     <span> {{ movie.rating }}</span>
     <br>
-    <button [routerLink]="['/rate', movie.id]">Rate the movie</button>
+    <button class="btn btn-primary" type="button" [routerLink]="['/rate', movie.id]">Rate the movie</button>
   </div>
   <br>
   <h4>Reviews:</h4>

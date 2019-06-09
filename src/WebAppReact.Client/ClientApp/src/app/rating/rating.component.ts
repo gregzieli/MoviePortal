@@ -27,7 +27,6 @@ export class RatingComponent implements OnInit {
   }
 
   rateMovie() {
-    debugger
     let input = new ReviewDto();
     input.movieId = this.movie.id;
     input.rating = this.rating;

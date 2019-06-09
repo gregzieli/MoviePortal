@@ -1,17 +1,31 @@
-<div *ngIf="movie">
+<div *ngIf="movie" class="md-form">
     <h1>{{ movie.title }}</h1>
     <br>
     
-    <div>
-      <span>Current rating:</span>
-      <span>{{ movie.rating }}</span>
-    </div>
     <form #ratingForm="ngForm">
-        <input required type="number" [(ngModel)]="rating" name="rating"> 
-        <input type="text" [(ngModel)]="title" name="title">
-        <textarea ref-textarea [(ngModel)]="textValue" rows="10" name="textValue"></textarea>
+      <div class="form-inline">
+          <span class="text-muted">Current rating: </span>
+          <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text" id="inputGroupPrepend">{{ movie.rating }}</span>
+              </div>
+              <input type="number" class="form-control" [(ngModel)]="rating" name="rating" placeholder="Rate the movie" aria-describedby="inputGroupPrepend" required>
+              <div class="invalid-feedback">
+                Please choose a username.
+              </div>
+            </div>
+      </div>
+        <br>
+        <input class="form-control form-control-lg" type="text" [(ngModel)]="title" name="title"placeholder="Your review title">
+        <textarea id="thista" 
+                  class="md-textarea form-control" 
+                  ref-textarea [(ngModel)]="textValue" 
+                  rows="10" 
+                  name="textValue"
+                  placeholder="Write review here...">
+      </textarea>
         <br/>
-        <input type="submit" (click)="rateMovie()">
+        <button class="btn btn-primary" type="submit" (click)="rateMovie()">Submit</button>
     </form>
   </div>
   
