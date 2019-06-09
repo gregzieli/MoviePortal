@@ -60,7 +60,7 @@ namespace WebAppReact.Api.Controllers
         }
 
         [HttpGet("{userId}/{userName}/{movieId}")]
-        public async Task<ReviewDetail> GetOwnReview(string userId, string userName, int movieId)
+        public async Task<ReviewDetail> GetReview(string userId, string userName, int movieId)
         {
             var movie = await _reviewRepository.GetMovieAsync(movieId);
             var review = movie.Reviews.SingleOrDefault(x => x.Author.Id == userId);
@@ -73,6 +73,7 @@ namespace WebAppReact.Api.Controllers
                 Title = review?.Title,
                 Movie = new MovieDetail
                 {
+                    Id = movie.Id,
                     Title = movie.Title,
                     Image = movie.Image,
                     Rating = movie.Rating

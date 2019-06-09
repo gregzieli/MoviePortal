@@ -20,18 +20,13 @@ export class RatingComponent implements OnInit {
 
   ngOnInit() {
     this.route.paramMap.subscribe(params => {
-      this.movieService.getMovie(+params.get("id"))
-        .subscribe(x => {
-          this.movie = x;
-        }, err => console.log(err));        
-    });
-  }
-
-  ngOnInit2() {
-    this.route.paramMap.subscribe(params => {
       this.movieService.getReviewDetail(+params.get("id"))
         .subscribe(x => {
           this.review = x;
+          this.movie = x.movie;
+          this.rating = x.rating;
+          this.title = x.title;
+          this.textValue = x.text;
         }, err => console.log(err));        
     });
   }
