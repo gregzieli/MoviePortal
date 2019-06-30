@@ -32,6 +32,10 @@ export class RatingComponent implements OnInit {
   }
 
   rateMovie() {
+    if (!this.rating) {
+      alert("Rate it first!");
+      return;
+    }
     let input = new ReviewDto();
     input.movieId = this.movie.id;
     input.rating = this.rating;
